@@ -1,0 +1,148 @@
+/* SafeRoute Premium Editorial Travel Safety Design System */
+/* Strictly follows: Deep Plum #24152F, Warm Ivory #F7F1E8, Electric Coral #FF6B55, Soft Mint #B8E0D2, Muted Lavender #D8C6E6, Charcoal #302A32, White #FFFFFF, Border #E6DDD4 */
+
+:root {
+  --color-plum: #24152F;
+  --color-plum-dark: #190E21;
+  --color-plum-light: #3D254F;
+  --color-ivory: #F7F1E8;
+  --color-ivory-warm: #EFE6D8;
+  --color-coral: #FF6B55;
+  --color-coral-dark: #E8533D;
+  --color-mint: #B8E0D2;
+  --color-mint-dark: #206352;
+  --color-lavender: #D8C6E6;
+  --color-lavender-dark: #5F3F7A;
+  --color-charcoal: #302A32;
+  --color-charcoal-muted: #6E6672;
+  --color-card: #FFFFFF;
+  --color-border: #E6DDD4;
+}
+
+body {
+  font-family: 'DM Sans', 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-charcoal);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography elements */
+h1, h2, h3, h4, .font-display {
+  font-family: 'Fraunces', 'DM Sans', serif;
+  color: var(--color-plum);
+}
+
+/* Card aesthetics */
+.sr-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 16px -2px rgba(36, 21, 47, 0.05), 0 2px 4px -2px rgba(36, 21, 47, 0.02);
+  transition: all 0.2s ease-in-out;
+}
+
+.sr-card-hover:hover {
+  box-shadow: 0 10px 25px -4px rgba(36, 21, 47, 0.09);
+  border-color: #D6CBC1;
+}
+
+/* Coral SOS Pulsing Action Only */
+@keyframes coral-sos-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 85, 0.65);
+    transform: scale(0.98);
+  }
+  60% {
+    box-shadow: 0 0 0 18px rgba(255, 107, 85, 0);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 85, 0);
+    transform: scale(0.98);
+  }
+}
+
+.sr-sos-pulse {
+  animation: coral-sos-pulse 2.2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Soft Mint Positive Pulse */
+@keyframes mint-radar-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.sr-mint-radar {
+  animation: mint-radar-pulse 2.4s infinite ease-out;
+}
+
+/* Audio waveform animation */
+@keyframes soundwave {
+  0%, 100% { height: 6px; }
+  50% { height: 22px; }
+}
+
+.sound-bar {
+  animation: soundwave 1.2s infinite ease-in-out;
+}
+.sound-bar:nth-child(2) { animation-delay: 0.2s; }
+.sound-bar:nth-child(3) { animation-delay: 0.4s; }
+.sound-bar:nth-child(4) { animation-delay: 0.1s; }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ivory);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B9AD;
+}
+
+/* Leaflet Map overrides for SafeRoute Editorial Theme */
+.leaflet-container {
+  font-family: inherit;
+  border-radius: 1.25rem;
+  z-index: 10;
+  background-color: #EFE6D8;
+}
+
+.sr-map-popup .leaflet-popup-content-wrapper {
+  background: #FFFFFF;
+  color: #302A32;
+  border-radius: 0.85rem;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 10px 25px -5px rgba(36, 21, 47, 0.15);
+  padding: 4px;
+}
+
+.sr-map-popup .leaflet-popup-tip {
+  background: #FFFFFF;
+}
+
+/* Mobile Safe Area */
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}
+
+/* Hold-to-activate progress ring */
+.progress-ring__circle {
+  transition: stroke-dashoffset 0.05s linear;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}

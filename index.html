@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#F7F1E8]">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#24152F">
+  <title>SafeRoute — Your journey. Your people. Your safety.</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
+
+  <!-- Google Fonts: DM Sans, Manrope, and Fraunces Editorial Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fraunces:opsz,wght@9..144,400..800&family=Manrope:wght@400..800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN with Strict Palette Configuration -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            plum: {
+              DEFAULT: '#24152F', // Deep Plum - primary navigation, headings, dark surfaces
+              dark: '#190E21',
+              light: '#3D254F',
+              50: '#F5F0F8',
+              100: '#E9DEEF',
+              700: '#3D254F',
+              800: '#2A1837',
+              900: '#24152F'
+            },
+            ivory: {
+              DEFAULT: '#F7F1E8', // Warm Ivory - primary page background
+              warm: '#EFE6D8',
+              50: '#FCF9F5',
+              100: '#F7F1E8',
+              200: '#EFE6D8',
+              300: '#E6DDD4'
+            },
+            coral: {
+              DEFAULT: '#FF6B55', // Electric Coral - SOS and urgent actions ONLY
+              dark: '#E8533D',
+              50: '#FFF2F0',
+              100: '#FFE2DE',
+              200: '#FFC5BD',
+              500: '#FF6B55',
+              600: '#E8533D',
+              700: '#C93B26'
+            },
+            mint: {
+              DEFAULT: '#B8E0D2', // Soft Mint - positive states and active journey indicators
+              dark: '#206352',
+              50: '#F0F9F6',
+              100: '#E0F3EC',
+              200: '#B8E0D2',
+              300: '#8ACDBA',
+              700: '#206352'
+            },
+            lavender: {
+              DEFAULT: '#D8C6E6', // Muted Lavender - secondary decorative accents
+              dark: '#5F3F7A',
+              50: '#F7F3FB',
+              100: '#EFE7F6',
+              200: '#D8C6E6',
+              300: '#BFA5D4',
+              700: '#5F3F7A'
+            },
+            charcoal: {
+              DEFAULT: '#302A32', // Charcoal - body text
+              muted: '#6E6672',
+              500: '#6E6672',
+              600: '#544D57',
+              700: '#3F3942',
+              800: '#302A32'
+            },
+            border: '#E6DDD4'
+          },
+          fontFamily: {
+            sans: ['DM Sans', 'Manrope', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['Fraunces', 'DM Sans', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Leaflet Map CSS & JS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- Local Offline-Ready React 18 & ReactDOM with CDN Fallbacks -->
+  <script src="/static/vendor/react.min.js"></script>
+  <script>
+    if (typeof React === 'undefined') {
+      document.write('<script src="https://unpkg.com/react@18/umd/react.production.min.js"><\/script>');
+    }
+  </script>
+  <script src="/static/vendor/react-dom.min.js"></script>
+  <script>
+    if (typeof ReactDOM === 'undefined') {
+      document.write('<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- SafeRoute Custom Design Styles -->
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+  <!-- Global Error Watcher -->
+  <script>
+    window.addEventListener('error', function(e) {
+      console.error('[SafeRoute Error]', e.message, e.filename, e.lineno);
+      var errBox = document.getElementById('safeher-error-fallback');
+      if (errBox) {
+        errBox.style.display = 'block';
+        var msgEl = document.getElementById('safeher-error-msg');
+        if (msgEl) msgEl.textContent = e.message + ' at line ' + e.lineno;
+      }
+    });
+  </script>
+</head>
+<body class="h-full bg-[#F7F1E8] text-[#302A32] antialiased">
+  
+  <!-- Main React Mount Root -->
+  <div id="root" class="min-h-full bg-[#F7F1E8]">
+    <div class="min-h-screen bg-[#F7F1E8] flex flex-col items-center justify-center text-[#24152F] p-6">
+      <div class="w-16 h-16 rounded-2xl bg-[#24152F] text-[#B8E0D2] flex items-center justify-center text-3xl shadow-xl shadow-plum-900/10 mb-4 animate-bounce">
+        🛡️
+      </div>
+      <h2 class="text-2xl font-black tracking-tight font-display text-[#24152F]">SafeRoute</h2>
+      <p class="text-xs text-[#6E6672] mt-1 font-medium">Your journey. Your people. Your safety.</p>
+      <div class="mt-4 flex items-center space-x-2 text-xs text-[#6E6672]">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#B8E0D2] animate-ping"></span>
+        <span>Loading SafeRoute workspace...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visible Error Diagnostics Box -->
+  <div id="safeher-error-fallback" style="display:none;" class="fixed inset-x-4 top-4 z-50 p-4 bg-[#24152F] text-white rounded-2xl border border-coral shadow-2xl text-xs max-w-lg mx-auto">
+    <strong class="font-bold text-coral block mb-1">⚠️ SafeRoute Diagnostics Notice</strong>
+    <span id="safeher-error-msg"></span>
+    <button onclick="location.reload()" class="mt-3 px-3 py-1 bg-coral hover:bg-coral-dark rounded-lg text-white font-bold block">Reload Application</button>
+  </div>
+
+  <!-- SafeRoute Core Scripts -->
+  <script src="/static/js/storage.js"></script>
+  <script src="/static/js/api.js"></script>
+
+  <!-- Pre-Compiled Production Bundle with Cache-Buster -->
+  <script src="/static/js/bundle.js?v=2.5.1"></script>
+
+</body>
+</html>
